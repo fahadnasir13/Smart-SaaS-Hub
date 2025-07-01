@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark mode first design */
+    --background: 222.2 84% 4.9%; /* #0f172a */
+    --foreground: 210 40% 98%; /* #ffffff */
+    --card: 222.2 84% 4.9%; /* #0f172a */
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 239 84% 67%; /* #4f46e5 (indigo) */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 32% 27%; /* #334155 */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 32% 27%;
+    --muted-foreground: 215 20.2% 65.1%; /* #64748b */
+    --accent: 160 84% 39%; /* #10b981 (emerald) */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --warning: 38 92% 50%; /* #f59e0b (amber) */
+    --warning-foreground: 210 40% 98%;
+    --border: 215 27.9% 16.9%; /* #1e293b */
+    --input: 215 27.9% 16.9%;
+    --ring: 239 84% 67%;
+    --chart-1: 239 84% 67%; /* primary */
+    --chart-2: 160 84% 39%; /* accent */
+    --chart-3: 38 92% 50%; /* warning */
+    --chart-4: 346 87% 43%; /* red */
+    --chart-5: 262 83% 58%; /* purple */
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/20;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer utilities {
+  /* Glass morphism effect */
+  .bg-glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  
+  /* Custom animations */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 5px rgba(79, 70, 229, 0.4);
+    }
+    to {
+      box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
+    }
+  }
+}
+
+/* Hide Next.js badge and error messages */
+body > nextjs-portal {
+  display: none;
+}
